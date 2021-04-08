@@ -60,13 +60,13 @@
 // the `Cowboy` namespace. Usage will be exactly the same, but instead of
 // $.method() or jQuery.method(), you'll need to use Cowboy.method().
 
-(function(window,undefined){
+(function($, window, undefined){
   '$:nomunge'; // Used by YUI compressor.
   
   // Since jQuery really isn't required for this plugin, use `jQuery` as the
   // namespace only if it already exists, otherwise use the `Cowboy` namespace,
   // creating it if necessary.
-  var $ = window.jQuery || window.Cowboy || ( window.Cowboy = {} ),
+  var $ = $ || window.jQuery || window.Cowboy || ( window.Cowboy = {} ),
     
     // Internal method reference.
     jq_throttle;
@@ -249,4 +249,4 @@
       : jq_throttle( delay, callback, at_begin !== false );
   };
   
-})(this);
+})(jQuery, window);
